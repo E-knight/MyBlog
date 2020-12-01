@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/mycss.css">
+    <title>博客详情</title>
+</head>
+<body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+<!--导航-->
+    <nav class="ui inverted attached segment">
+        <div class="ui container">
+
+            <div class="ui inverted secondary stackable menu menu-padding">
+                <h2 class="ui yellow header item">梁雄飞的Blog</h2>
+                <a href="#" class="menu-item item mobile-hide"><i class="home icon"></i>首页</a>
+                <a href="#" class="menu-item item mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" class="menu-item item mobile-hide"><i class="tag icon"></i>标签</a>
+                <a href="#" class="menu-item item mobile-hide"><i class="clone icon"></i>归档</a>
+                <a href="#" class="menu-item item mobile-hide"><i class="info icon"></i>关于我</a>
+                <div class="menu-item right item mobile-hide">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" placeholder="搜索">
+                        <i class="search icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button top-right mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+<!--中间内容-->
+    <div class="content-padding">
+        <div class="ui container">
+            <div class="ui top attached segment">
+                <div class="ui horizontal link list">
+                    <div class="item">
+                        <img src="https://i1.hdslb.com/bfs/face/5ea2236baed1b7b0668314f0bc6bdb8c937ff2c8.jpg@140w_140h_1c.webp" class="ui avatar image">
+                        <div class="content"><a href="#" class="text-black" style="font-weight: bold">梁雄飞</a></div>
+                    </div>
+                    <div class="item" style="margin-left: 4em">
+                        <i class="calendar icon "></i>更于2020-11-29
+                    </div>
+                    <div class="item" style="margin-left: 4em">
+                        <i class="eye icon"></i>浏览量：488
+                    </div>
+                </div>
+            </div>
+            <div class="ui  attached segment">
+                <img class="ui fluid centered image img-scale2" src="https://images.pexels.com/photos/814499/pexels-photo-814499.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500">
+            </div>
+            <div class="ui attached padded segment">
+                <div class="ui right aligned basic segment">
+                    <div class="ui red basic label">原创</div>
+                </div>
+                <h2 class="ui center aligned header">HDU 4405( Aeroplane chess)概率DP</h2>
+                <br>
+                <div id="content" class="blog">
+                    <p>Hzz loves aeroplane chess very much. The chess map contains N+1 grids labeled from 0 to N. Hzz starts at grid 0. For each step he throws a dice(a dice have six faces with equal probability to face up and the numbers on the faces are 1,2,3,4,5,6). When Hzz is at grid i and the dice number is x, he will moves to grid i+x. Hzz finishes the game when i+x is equal to or greater than N.</p>
+                    <p>There are also M flight lines on the chess map. The i-th flight line can help Hzz fly from grid Xi to Yi (0&lt;Xi&lt;Yi≤N) without throwing the dice. If there is another flight line from Yi, Hzz can take the flight line continuously. It is granted that there is no two or more flight lines start from the same grid.</p>
+                    <p>Please help Hzz calculate the expected dice throwing times to finish the game.</p>
+                    <h3>Input</h3>
+                    <p>There are multiple test cases. Each test case contains several lines. The first line contains two integers N(1≤N≤100000) and M(0≤M≤1000). Then M lines follow, each line contains two integers Xi,Yi(1≤Xi&lt;Yi≤N). The input end with N=0, M=0. <p/>
+                    <h3>Output</h3>
+                    <p>For each test case in the input, you should output a line indicating the expected dice throwing times. Output should be rounded to 4 digits after decimal point.</p>
+                    <h3>Sample Input</h3>
+                    <p>2 0</p>
+                    <p>8 3</p>
+                    <p>2 4</p>
+                    <p>4 5</p>
+                    <p>7 8</p>
+                    <p>0 0</p>
+                    <h3>Sample Output</h3>
+                    <p>1.1667</p>
+                    <p>2.3441</p>
+                </div>
+                <div class="ui center aligned basic segment">
+                    <div class="ui yellow basic label label-margin">刷题</div>
+                    <div class="ui yellow basic label label-margin">HDU</div>
+                    <div class="ui yellow basic label label-margin">DP</div>
+                </div>
+                <div class="ui center aligned basic segment">
+                    <button id="payButton" class="ui red basic circular button">赞赏</button>
+                </div>
+                <div class="ui payQR flowing popup transition hidden">
+                    <div class="ui red basic label">
+                        <div class="ui images" style="font-size: 15px">
+                            <div class="image">
+                                <img src="../static/images/pay1.jpg" class="ui rounded bordered image" style="width: 200px">
+                                <div>微信支付</div>
+                            </div>
+                            <div class="image">
+                                <img src="../static/images/pay2.jpg" class="ui rounded bordered image" style="width: 200px">
+                                <div>支付宝支付</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="ui attached positive message">
+                <div class="ui middle aligned grid">
+                    <div class="eleven wide column">
+                        <ul class="list">
+                            <li>作者：梁雄飞</li>
+                            <li>发表时间：2020-11-29</li>
+                            <li>版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。</li>
+                            <li>作者微信：作者微信二维码</li>
+                        </ul>
+                    </div>
+                    <div class="five wide column">
+                        <img src="../static/images/qrcode.jpg" class="ui right floated rounded bordered image" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="ui bottom attached segment">
+                <div class="ui yellow segment">
+                    <div class="ui comments">
+                        <h3 class="ui dividing header">评论</h3>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1261817278,1542460372&fm=111&gp=0.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Matt</a>
+                                <div class="metadata">
+                                    <span class="date">Today at 5:42PM</span>
+                                </div>
+                                <div class="text">
+                                    How artistic!
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1762065740,1806700128&fm=111&gp=0.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Elliot Fu</a>
+                                <div class="metadata">
+                                    <span class="date">Yesterday at 12:30AM</span>
+                                </div>
+                                <div class="text">
+                                    <p>This has been very useful for my research. Thanks as well!</p>
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                            <div class="comments">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2038431386,2770542672&fm=26&gp=0.jpg">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author">Jenny Hess</a>
+                                        <div class="metadata">
+                                            <span class="date">Just now</span>
+                                        </div>
+                                        <div class="text">
+                                            Elliot you are always so right :)
+                                        </div>
+                                        <div class="actions">
+                                            <a class="reply">回复</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1441836571,2166773131&fm=26&gp=0.jpg">
+                            </a>
+                            <div class="content">
+                                <a class="author">Joe Henderson</a>
+                                <div class="metadata">
+                                    <span class="date">5 days ago</span>
+                                </div>
+                                <div class="text">
+                                    Dude, this is awesome. Thanks so much
+                                </div>
+                                <div class="actions">
+                                    <a class="reply">回复</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form">
+                    <div class="field">
+                        <textarea name="content" placeholder="输入评论内容..."></textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field mobile-wide comment-margin">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="nickname" placeholder="姓名">
+                            </div>
+
+                        </div>
+                        <div class="field mobile-wide comment-margin">
+                            <div class="ui left icon input">
+                                <i class="mail icon"></i>
+                                <input type="text" name="email" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="field mobile-wide comment-margin">
+                            <button class="ui mobile-wide yellow button"><i class="edit icon"></i>发布 </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--底部-->
+    <footer class="ui inverted vertical segment">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <img src="../static/images/qrcode.jpg" class="ui rounded image" style="width: 120px;"/>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">我的故事</a>
+                        <a href="#" class="item">刷题清单</a>
+                    </div>
+                </div>
+                <div class="four wide column">
+                    <h4 class="ui inverted header">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item"><i class="envelope icon"></i>邮件：3414995569@qq.com</a>
+                        <a href="#" class="item"><i class="comments icon"></i> 微信：lxf13818737590</a>
+                    </div>
+                </div>
+                <div class="six wide column">
+                    <h4 class="ui inverted header">关于博客</h4>
+                    <p class="ui inverted" style="color: #ababac;">梁雄飞的个人博客，分享有关编程、生活的相关内容。</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p style="color: #ababac;">Copyright©2020 - 2021 Blog Designed by LiangXiongfei</p>
+        </div>
+    </footer>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.menu-item').toggleClass('mobile-hide');
+    });
+    $('#payButton').popup({
+        popup : $('.payQR.popup'),
+        on : 'click',
+        position: 'bottom center'
+    });
+</script>
+</body>
+</html>

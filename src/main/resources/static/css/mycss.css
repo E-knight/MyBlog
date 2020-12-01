@@ -1,0 +1,68 @@
+body{
+    background: url("../images/bg.png");
+}
+.menu-padding{
+    padding-top: 0.2em !important;
+    padding-bottom: 0.2em !important;
+}
+.menu-padding a{
+    padding-left: 5em !important;
+}
+.label-margin{
+    margin: 0.5em !important;
+}
+.text-black{
+    color: #000000!important;
+}
+.segment-top{
+    margin-top: 4em !important;
+}
+.content-padding{
+    margin-top: 4em !important;
+    margin-inside: 4em !important;
+}
+.segment-left{
+    padding-left: 8em!important;
+}
+.inline-block{
+    display: inline-block !important;
+}
+.img-scale{
+    width:800px!important;
+    height: 160px!important;
+    /*height:450px;*/
+}
+.img-scale2{
+    width: 1200px !important;
+    height: 600px!important;
+}
+.blog-text{
+    font-size: 15px!important;
+    color: darkgray!important;
+}
+.top-right{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.mobile-show{
+    display: none !important;
+}
+@media screen and (max-width: 768px){
+    .mobile-hide{
+        display: none!important;
+    }
+    .mobile-show{
+        display: block !important;
+    }
+    .mobile-wide{
+        width: 100% !important;
+    }
+}
+.blog p{
+    font-size: 17px;
+}
+.comment-margin{
+    margin-top: 2em!important;
+    margin-left: 2em!important;
+}
