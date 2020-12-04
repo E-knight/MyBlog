@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
@@ -8,11 +8,13 @@
     <title>博客分类</title>
 </head>
 <body>
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
 
 <!--导航-->
-    <nav class="ui inverted attached segment">
+    <nav th:replace="_fragments :: menu(2)" class="ui inverted attached segment">
         <div class="ui container">
 
             <div class="ui inverted secondary stackable menu menu-padding">
@@ -189,7 +191,7 @@
     </div>
 
 <!--底部-->
-    <footer class="ui inverted vertical segment">
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment">
         <div class="ui center aligned container">
             <div class="ui inverted divided stackable grid">
                 <div class="three wide column">

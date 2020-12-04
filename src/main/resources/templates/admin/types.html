@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/mycss.css">
+    <title>分类管理</title>
+</head>
+<body>
+<!--/*/<th:block th:replace="admin/_fragments :: script">/*/-->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
+
+<!--导航-->
+    <nav th:replace="admin/_fragments :: menu(2)" class="ui inverted attached segment">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu menu-padding">
+                <h2 class="ui yellow header item">管理后台</h2>
+                <a href="#" class="active menu-item item mobile-hide"><i class="home icon"></i>博客</a>
+                <a href="#" class="menu-item item mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" class="menu-item item mobile-hide"><i class="tag icon"></i>标签</a>
+                <div class="right mobile-hide menu">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1261817278,1542460372&fm=111&gp=0.jpg" class="ui avatar image">
+                            梁雄飞
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button top-right mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <div class="ui attached pointing menu">
+        <div class="ui container">
+            <div class="right menu">
+                <a href="#" th:href="@{/admin/types/input}" class=" item">新增</a>
+                <a href="#" th:href="@{/admin/types}"class="yellow active item">列表</a>
+            </div>
+
+        </div>
+
+    </div>
+<!--中间内容-->
+    <div class="content-padding">
+        <div class="ui container">
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="header">提示：</div>
+                <p th:text="${message}">恭喜！操作成功</p>
+            </div>
+            <table class="ui celled center aligned table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="type,iterStat: ${page.content}">
+                    <td th:text="${iterStat.count}">1</td>
+                    <td th:text="${type.name}">HDU 4405( Aeroplane chess)概率DP</td>
+                    <td>
+                        <a href="#" th:href="@{/admin/types/{id}/input(id=${type.id})}" class="ui yellow basic button">编辑</a>
+                        <a href="#" th:href="@{/admin/types/{id}/delete(id=${type.id})}" class="ui red basic button">删除</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="6" >
+                        <div class="ui pagination menu" th:if="${page.totalPages}>1">
+                            <a th:href="@{/admin/types(page=${page.number}-1)}" th:unless="${page.first}" class="item">上一页</a>
+                            <a th:href="@{/admin/types(page=${page.number}+1)}" th:unless="${page.last}" class="item">下一页</a>
+                        </div>
+                        <a href="#" th:href="@{/admin/types/input}" class="ui  right floated yellow basic button">新增</a>
+                    </th>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+<!--底部-->
+    <footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment" style="margin-top: 10em!important;">
+        <div class="ui center aligned container">
+            <div class="ui inverted divided stackable grid">
+                <div class="three wide column">
+                    <img src="../../static/images/qrcode.jpg" class="ui rounded image" style="width: 120px;"/>
+                </div>
+                <div class="three wide column">
+                    <h4 class="ui inverted header">最新博客</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item">我的故事</a>
+                        <a href="#" class="item">刷题清单</a>
+                    </div>
+                </div>
+                <div class="four wide column">
+                    <h4 class="ui inverted header">联系我</h4>
+                    <div class="ui inverted link list">
+                        <a href="#" class="item"><i class="envelope icon"></i>邮件：3414995569@qq.com</a>
+                        <a href="#" class="item"><i class="comments icon"></i> 微信：lxf13818737590</a>
+                    </div>
+                </div>
+                <div class="six wide column">
+                    <h4 class="ui inverted header">关于博客</h4>
+                    <p class="ui inverted" style="color: #ababac;">梁雄飞的个人博客，分享有关编程、生活的相关内容。</p>
+                </div>
+            </div>
+            <div class="ui inverted section divider"></div>
+            <p style="color: #ababac;">Copyright©2020 - 2021 Blog Designed by LiangXiongfei</p>
+        </div>
+    </footer>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.menu-item').toggleClass('mobile-hide');
+    });
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    });
+    $('.message .close').on('click',function () {
+        $(this).closest('.message').transition('fade');
+    })
+</script>
+</body>
+</html>

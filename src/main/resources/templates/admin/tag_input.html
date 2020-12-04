@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="admin/_fragments :: head(~{::title})">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <link rel="stylesheet" href="../../static/css/mycss.css">
+  <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+  <title>分类新增</title>
+</head>
+<body>
+<!--/*/<th:block th:replace="admin/_fragments :: script">/*/-->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="../../static/lib/editormd/editormd.min.js"></script>
+<!--/*/</th:block>/*/-->
+
+<!--导航-->
+<nav th:replace="admin/_fragments :: menu(3)" class="ui inverted attached segment">
+  <div class="ui container">
+
+    <div class="ui inverted secondary stackable menu menu-padding">
+      <h2 class="ui yellow header item">管理后台</h2>
+      <a href="#" class="active menu-item item mobile-hide"><i class="home icon"></i>博客</a>
+      <a href="#" class="menu-item item mobile-hide"><i class="idea icon"></i>分类</a>
+      <a href="#" class="menu-item item mobile-hide"><i class="tags icon"></i>标签</a>
+      <div class="right mobile-hide menu">
+        <div class="ui dropdown item">
+          <div class="text">
+            <img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1261817278,1542460372&fm=111&gp=0.jpg" class="ui avatar image">
+            梁雄飞
+          </div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a href="#" class="item">注销</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#" class="ui menu toggle black icon button top-right mobile-show">
+    <i class="sidebar icon"></i>
+  </a>
+</nav>
+<div class="ui attached pointing menu">
+  <div class="ui container">
+    <div class="right menu">
+      <a href="#" th:href="@{/admin/tags/input}" class="yellow active item">新增</a>
+      <a href="#" th:href="@{/admin/tags}"class="item">列表</a>
+    </div>
+
+  </div>
+
+</div>
+<!--中间内容-->
+<div class="content-padding">
+  <div class="ui container">
+    <form action="#" method="post" th:object="${tag}" th:action="*{id}==null ? @{/admin/tags} : @{/admin/tags/{id}(id=*{id})}" class="ui form">
+      <input type="hidden" name="id" th:value="*{id}">
+      <div class="required field">
+        <div class="ui left labeled input">
+          <label class="ui yellow basic label">名称</label>
+          <input type="text" name="name" placeholder="标签名称" th:value="*{name}">
+        </div>
+      </div>
+      <div class="ui error message"></div>
+      <!--/*/
+      <div class="ui negative message" th:if="${#fields.hasErrors('name')}"  >
+        <i class="close icon"></i>
+        <div class="header">验证失败</div>
+        <p th:errors="*{name}">提交信息不符合规则</p>
+      </div>
+       /*/-->
+
+      <div class="ui right aligned container">
+        <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+        <button class="ui yellow submit button">提交</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<!--底部-->
+<footer th:replace="admin/_fragments :: footer" class="ui inverted vertical segment" style="margin-top: 15em!important;">
+  <div class="ui center aligned container">
+    <div class="ui inverted divided stackable grid">
+      <div class="three wide column">
+        <img src="../../static/images/qrcode.jpg" class="ui rounded image" style="width: 120px;"/>
+      </div>
+      <div class="three wide column">
+        <h4 class="ui inverted header">最新博客</h4>
+        <div class="ui inverted link list">
+          <a href="#" class="item">我的故事</a>
+          <a href="#" class="item">刷题清单</a>
+        </div>
+      </div>
+      <div class="four wide column">
+        <h4 class="ui inverted header">联系我</h4>
+        <div class="ui inverted link list">
+          <a href="#" class="item"><i class="envelope icon"></i>邮件：3414995569@qq.com</a>
+          <a href="#" class="item"><i class="comments icon"></i> 微信：lxf13818737590</a>
+        </div>
+      </div>
+      <div class="six wide column">
+        <h4 class="ui inverted header">关于博客</h4>
+        <p class="ui inverted" style="color: #ababac;">梁雄飞的个人博客，分享有关编程、生活的相关内容。</p>
+      </div>
+    </div>
+    <div class="ui inverted section divider"></div>
+    <p style="color: #ababac;">Copyright©2020 - 2021 Blog Designed by LiangXiongfei</p>
+  </div>
+</footer>
+<script>
+  $('.menu.toggle').click(function () {
+    $('.menu-item').toggleClass('mobile-hide');
+  });
+  $('.ui.dropdown').dropdown({
+    on: 'hover'
+  });
+  $('.ui.form').form({
+    fields :{
+      title: {
+        identifier: 'name',
+        rules: [{
+          type: 'empty',
+          prompt: '请输入标签名称'
+        }]
+      }
+    }
+  });
+
+</script>
+</body>
+</html>

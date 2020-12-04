@@ -1,5 +1,6 @@
 spring:
   thymeleaf:
     mode: HTML
+    encoding: UTF-8
   profiles:
-    active: pro
+    active: dev

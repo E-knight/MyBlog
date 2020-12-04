@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
-    <link rel="stylesheet" href="../static/css/mycss.css">
+    <link rel="stylesheet" href="../static/css/mycss.css" th:href="@{/css/mycss.css}">
     <title>首页</title>
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
-<!--导航-->
-    <nav class="ui inverted attached segment">
-        <div class="ui container">
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.js"></script>
+<!--/*/</th:block>/*/-->
 
+
+<!--导航-->
+    <nav th:replace="_fragments :: menu(5)" class="ui inverted attached segment">
+        <div class="ui container">
             <div class="ui inverted secondary stackable menu menu-padding">
                 <h2 class="ui yellow header item">梁雄飞的Blog</h2>
-                <a href="#" class="active menu-item item mobile-hide"><i class="home icon"></i>首页</a>
+                <a href="#" class="menu-item item mobile-hide"><i class="home icon"></i>首页</a>
                 <a href="#" class="menu-item item mobile-hide"><i class="idea icon"></i>分类</a>
                 <a href="#" class="menu-item item mobile-hide"><i class="tag icon"></i>标签</a>
                 <a href="#" class="menu-item item mobile-hide"><i class="clone icon"></i>归档</a>
@@ -283,7 +286,7 @@
                     <!--                二维码-->
                     <h4 class="ui horizontal divider header">关注我</h4>
                     <div class="ui centered card" style="width:160px">
-                        <img src="../static/images/qrcode.jpg" class="ui rounded image" >
+                        <img src="../static/images/qrcode.jpg" th:src="@{/images/qrcode.jpg}" class="ui rounded image" >
                     </div>
                 </div>
             </div>
@@ -291,11 +294,11 @@
     </div>
 
 <!--底部-->
-    <footer class="ui inverted vertical segment">
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment">
         <div class="ui center aligned container">
             <div class="ui inverted divided stackable grid">
                 <div class="three wide column">
-                    <img src="../static/images/qrcode.jpg" class="ui rounded image" style="width: 120px;"/>
+                    <img src="../static/images/qrcode.jpg" th:src="@{/images/qrcode.jpg}" class="ui rounded image" style="width: 120px;"/>
                 </div>
                 <div class="three wide column">
                     <h4 class="ui inverted header">最新博客</h4>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
@@ -12,6 +12,7 @@
     <title>博客详情</title>
 </head>
 <body>
+<!--/*/<th:block th:replace="_fragments :: script">/*/-->
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.js"></script>
@@ -19,9 +20,11 @@
 <script src="../static/lib/tocbot/tocbot.js"></script>
 <script src="../static/lib/qrcode/qrcode.js"></script>
 <script src="../static/lib/waypoint/jquery.waypoints.js"></script>
+<!--/*/</th:block>/*/-->
+
 
 <!--导航-->
-    <nav class="ui inverted attached segment">
+    <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment">
         <div class="ui container">
 
             <div class="ui inverted secondary stackable menu menu-padding">
@@ -88,7 +91,8 @@
                     <h3 id="sanmple_output">Sample Output</h3>
                     <p>1.1667</p>
                     <p>2.3441</p>
-                    <pre ><code class="language-c++">#include&lt;bits/stdc++.h&gt;
+                    <pre class="language-c"><code class="language-c"><p>
+#include&lt;bits/stdc++.h&gt;
 #define LL long long
 #define maxn 101000
 #define eps 1e-8
@@ -114,9 +118,9 @@ int main()
             if(route[i]==-1)
             {
                 for(int j=1;j<=6;j++)
-                {
+<!--                {-->
                     dp[i]+=dp[i+j]/6;
-                }
+<!--                }-->
                 dp[i]++;
             }
             else
@@ -127,7 +131,8 @@ int main()
         printf("%.4f\n",dp[0]);
     }
     return 0;
-}</code></pre>
+}
+                    </p></code></pre>
                 </div>
                 <div class="ui center aligned basic segment">
                     <div class="ui yellow basic label label-margin">刷题</div>
@@ -141,11 +146,11 @@ int main()
                     <div class="ui red basic label">
                         <div class="ui images" style="font-size: 15px">
                             <div class="image">
-                                <img src="../static/images/pay1.jpg" class="ui rounded bordered image" style="width: 200px">
+                                <img src="../static/images/pay1.jpg" th:src="@{images/pay1.jpg}" class="ui rounded bordered image" style="width: 200px">
                                 <div>微信支付</div>
                             </div>
                             <div class="image">
-                                <img src="../static/images/pay2.jpg" class="ui rounded bordered image" style="width: 200px">
+                                <img src="../static/images/pay2.jpg" th:src="@{images/pay2.jpg}" class="ui rounded bordered image" style="width: 200px">
                                 <div>支付宝支付</div>
                             </div>
                         </div>
@@ -166,7 +171,7 @@ int main()
                         </ul>
                     </div>
                     <div class="five wide column">
-                        <img src="../static/images/qrcode.jpg" class="ui right floated rounded bordered image" style="width: 110px">
+                        <img src="../static/images/qrcode.jpg" th:src="@{/images/qrcode.jpg}" class="ui right floated rounded bordered image" style="width: 110px">
                     </div>
                 </div>
             </div>
@@ -288,11 +293,11 @@ int main()
 <!--        <img src="../static/images/qrcode.jpg" class="ui rounded image" style="width: 140px">-->
     </div>
 <!--底部-->
-    <footer class="ui inverted vertical segment">
+    <footer th:replace="_fragments :: footer" class="ui inverted vertical segment">
         <div class="ui center aligned container">
             <div class="ui inverted divided stackable grid">
                 <div class="three wide column">
-                    <img src="../static/images/qrcode.jpg" class="ui rounded image" style="width: 120px;"/>
+                    <img src="../static/images/qrcode.jpg" th:src="@{/images/qrcode.jpg}" class="ui rounded image" style="width: 120px;"/>
                 </div>
                 <div class="three wide column">
                     <h4 class="ui inverted header">最新博客</h4>
