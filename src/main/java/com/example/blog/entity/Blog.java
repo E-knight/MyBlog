@@ -41,6 +41,8 @@ public class Blog {
     @Transient
     private String tagIds;
 
+    private String description;
+
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();
     public Blog() {
@@ -188,6 +190,14 @@ public class Blog {
 
     public void setTagIds(String tagIds) {
         this.tagIds = tagIds;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void init(){

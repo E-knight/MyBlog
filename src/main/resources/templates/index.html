@@ -15,7 +15,7 @@
 
 
 <!--导航-->
-    <nav th:replace="_fragments :: menu(5)" class="ui inverted attached segment">
+    <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment">
         <div class="ui container">
             <div class="ui inverted secondary stackable menu menu-padding">
                 <h2 class="ui yellow header item">梁雄飞的Blog</h2>
@@ -49,16 +49,16 @@
                                 <h3 class="ui yellow header">博客</h3>
                             </div>
                             <div class="column right aligned">
-                                共<h2 class="ui red header inline-block">245</h2>篇
+                                共<h2 class="ui red header inline-block" th:text="${page.totalElements}">245</h2>篇
                             </div>
                         </div>
                     </div>
                     <div class="ui attached segment">
-                        <div class="ui vertical segment">
-                            <div class="ui mobile reversed stackable grid">
+                        <div class="ui vertical segment" th:each="blog : ${page.content}" >
+                            <div class="ui middle aligned mobile reversed stackable grid" >
                                 <div class="eleven wide column">
-                                    <h3 class="ui header">HDU 4405( Aeroplane chess)概率DP</h3>
-                                    <p class="blog-text">
+                                    <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="text-black" th:text="${blog.title}">HDU 4405( Aeroplane chess)概率DP</a></h3>
+                                    <p class="blog-text" th:text="|${blog.description}...|">
                                         Hzz loves aeroplane chess very much. The chess map contains N+1 grids labeled from 0 to N.
                                         Hzz starts at grid 0. For each step he throws a dice(a dice have six faces with equal probability to face up and
                                         the numbers on the faces are 1,2,3,4,5,6). When Hzz is at grid i and the dice number is x, he will moves to grid i+x.
@@ -68,148 +68,37 @@
                                         <div class="eleven wide column">
                                             <div class="ui horizontal link list">
                                                 <div class="item">
-                                                    <img src="https://i1.hdslb.com/bfs/face/5ea2236baed1b7b0668314f0bc6bdb8c937ff2c8.jpg@140w_140h_1c.webp" class="ui avatar image">
-                                                    <div class="content"><a href="#" class="text-black" style="font-weight: bold">梁雄飞</a></div>
+                                                    <img src="https://dss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1261817278,1542460372&fm=111&gp=0.jpg" th:src="@{${blog.user.avatar}}"class="ui avatar image">
+                                                    <div class="content"><a href="#" class="text-black" style="font-weight: bold" th:text="${blog.user.nickname}">梁雄飞</a></div>
                                                 </div>
                                                 <div class="item" style="margin-left: 4em">
-                                                    <i class="calendar icon "></i>2020-11-29
+                                                    <i class="calendar icon "></i><span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-11-29</span>
                                                 </div>
                                                 <div class="item" style="margin-left: 4em">
-                                                    <i class="eye icon"></i>488
+                                                    <i class="eye icon"></i><span th:text="${blog.views}">488</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="right aligned five wide column">
-                                            <a href="#" class="ui yellow basic label" target="_blank">查看详情</a>
+                                            <a href="#" class="ui yellow basic label" target="_blank" th:text="${blog.type.name}">ACM</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img src="https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ" class="ui rounded image img-scale">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui vertical segment">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">HDU 4405( Aeroplane chess)概率DP</h3>
-                                    <p class="blog-text">
-                                        Hzz loves aeroplane chess very much. The chess map contains N+1 grids labeled from 0 to N.
-                                        Hzz starts at grid 0. For each step he throws a dice(a dice have six faces with equal probability to face up and
-                                        the numbers on the faces are 1,2,3,4,5,6). When Hzz is at grid i and the dice number is x, he will moves to grid i+x.
-                                        Hzz finishes the game when i+x is equal to or greater than N...
-                                    </p>
-                                    <div class="ui stackable grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i1.hdslb.com/bfs/face/5ea2236baed1b7b0668314f0bc6bdb8c937ff2c8.jpg@140w_140h_1c.webp" class="ui avatar image">
-                                                    <div class="content"><a href="#" class="text-black" style="font-weight: bold">梁雄飞</a></div>
-                                                </div>
-                                                <div class="item" style="margin-left: 4em">
-                                                    <i class="calendar icon "></i>2020-11-29
-                                                </div>
-                                                <div class="item" style="margin-left: 4em">
-                                                    <i class="eye icon"></i>488
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="right aligned five wide column">
-                                            <a href="#" class="ui yellow basic label" target="_blank">查看详情</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img src="https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ" class="ui rounded image img-scale">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui vertical segment">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">HDU 4405( Aeroplane chess)概率DP</h3>
-                                    <p class="blog-text">
-                                        Hzz loves aeroplane chess very much. The chess map contains N+1 grids labeled from 0 to N.
-                                        Hzz starts at grid 0. For each step he throws a dice(a dice have six faces with equal probability to face up and
-                                        the numbers on the faces are 1,2,3,4,5,6). When Hzz is at grid i and the dice number is x, he will moves to grid i+x.
-                                        Hzz finishes the game when i+x is equal to or greater than N...
-                                    </p>
-                                    <div class="ui stackable grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i1.hdslb.com/bfs/face/5ea2236baed1b7b0668314f0bc6bdb8c937ff2c8.jpg@140w_140h_1c.webp" class="ui avatar image">
-                                                    <div class="content"><a href="#" class="text-black" style="font-weight: bold">梁雄飞</a></div>
-                                                </div>
-                                                <div class="item" style="margin-left: 4em">
-                                                    <i class="calendar icon "></i>2020-11-29
-                                                </div>
-                                                <div class="item" style="margin-left: 4em">
-                                                    <i class="eye icon"></i>488
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="right aligned five wide column">
-                                            <a href="#" class="ui yellow basic label" target="_blank">查看详情</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img src="https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ" class="ui rounded image img-scale">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui vertical segment">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="eleven wide column">
-                                    <h3 class="ui header">HDU 4405( Aeroplane chess)概率DP</h3>
-                                    <p class="blog-text">
-                                        Hzz loves aeroplane chess very much. The chess map contains N+1 grids labeled from 0 to N.
-                                        Hzz starts at grid 0. For each step he throws a dice(a dice have six faces with equal probability to face up and
-                                        the numbers on the faces are 1,2,3,4,5,6). When Hzz is at grid i and the dice number is x, he will moves to grid i+x.
-                                        Hzz finishes the game when i+x is equal to or greater than N...
-                                    </p>
-                                    <div class="ui stackable grid">
-                                        <div class="eleven wide column">
-                                            <div class="ui horizontal link list">
-                                                <div class="item">
-                                                    <img src="https://i1.hdslb.com/bfs/face/5ea2236baed1b7b0668314f0bc6bdb8c937ff2c8.jpg@140w_140h_1c.webp" class="ui avatar image">
-                                                    <div class="content"><a href="#" class="text-black" style="font-weight: bold">梁雄飞</a></div>
-                                                </div>
-                                                <div class="item" style="margin-left: 4em">
-                                                    <i class="calendar icon "></i>2020-11-29
-                                                </div>
-                                                <div class="item" style="margin-left: 4em">
-                                                    <i class="eye icon"></i>488
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="right aligned five wide column">
-                                            <a href="#" class="ui yellow basic label" target="_blank">查看详情</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="five wide column">
-                                    <a href="#" target="_blank">
-                                        <img src="https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ" class="ui rounded image img-scale">
+                                    <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank">
+                                        <img src="https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ" th:src="@{${blog.firstImage}}" class="ui rounded image img-scale">
                                     </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ui bottom attached segment">
+                    <div class="ui bottom attached segment" th:if="${page.totalPages}>1">
                         <div class="ui middle aligned two column grid">
                             <div class="column">
-                                <a href="#" class="ui basic yellow button">上一页</a>
+                                <a href="#" th:href="@{/(page=${page.number-1})}" th:unless="${page.first}" class="ui basic yellow button">上一页</a>
                             </div>
                             <div class="column right aligned">
-                                <a href="#" class="ui basic yellow button">下一页</a>
+                                <a href="#" th:href="@{/(page=${page.number+1})}" th:unless="${page.last}" class="ui basic yellow button">下一页</a>
                             </div>
                         </div>
                     </div>
@@ -224,18 +113,20 @@
                                     <i class="idea icon"></i>分类
                                 </div>
                                 <div class="column">
-                                    <a href="" target="_blank">查看更多<i class="angle double right icon"></i></a>
+                                    <a href="#" th:href="@{/types/-1}" target="_blank">查看更多<i class="angle double right icon"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="ui yellow segment">
-                            <div class="ui fluid vertical menu">
-                                <a href="#" class="item">SpringBoot<div class="ui yellow basic label">241</div></a>
+                            <div class="ui fluid vertical menu" >
+                                <a href="#" th:href="@{/types/{id}(id=${type.id})}" class="item" th:each="type: ${types}"><span th:text="${type.name}">SpringBoot</span><div class="ui yellow basic label" th:text="${#arrays.length(type.blogs)}">241</div></a>
+                                <!--/*-->
                                 <a href="#" class="item">Vue<div class="ui yellow basic label">100</div></a>
                                 <a href="#" class="item">ACMS<div class="ui yellow basic label">87</div></a>
                                 <a href="#" class="item">Fabric<div class="ui yellow basic label">50</div></a>
                                 <a href="#" class="item">Unity<div class="ui yellow basic label">39</div></a>
                                 <a href="#" class="item">Linux<div class="ui yellow basic label">24</div></a>
+                                <!--*/-->
                             </div>
                         </div>
                     </div>
@@ -247,12 +138,13 @@
                                     <i class="tag icon"></i>标签
                                 </div>
                                 <div class="column">
-                                    <a href="" target="_blank">查看更多<i class="angle double right icon"></i></a>
+                                    <a href="#" th:href="@{/tags/-1}" target="_blank">查看更多<i class="angle double right icon"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="ui yellow segment">
-                            <a href="#" target="_blank" class="ui yellow basic left label label-margin">前端</a>
+                            <a href="#" th:href="@{/tags/{id}(id=${tag.id})}"target="_blank" class="ui yellow basic left label label-margin" th:each="tag : ${tags}"><span th:text="${tag.name}">前端</span></a>
+                            <!--/*-->
                             <a href="#" target="_blank" class="ui yellow basic left label label-margin">后端</a>
                             <a href="#" target="_blank" class="ui yellow basic left label label-margin">区块链</a>
                             <a href="#" target="_blank" class="ui yellow basic left label label-margin">机器学习</a>
@@ -260,6 +152,7 @@
                             <a href="#" target="_blank" class="ui yellow basic left label label-margin">操作系统</a>
                             <a href="#" target="_blank" class="ui yellow basic left label label-margin">计算机网络</a>
                             <a href="#" target="_blank" class="ui yellow basic left label label-margin">编译原理</a>
+                            <!--*/-->
                         </div>
                     </div>
                     <!--                最新推荐-->
@@ -267,9 +160,10 @@
                         <div class="ui secondary segment">
                             <i class="bookmark icon"></i>最新推荐
                         </div>
-                        <div class="ui segment">
-                            <a href="#" target="_blank" class="text-black">我的故事</a>
+                        <div class="ui segment" th:each="blog : ${recommendBlogs}">
+                            <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="text-black" th:text="${blog.title}">我的故事</a>
                         </div>
+                        <!--/*-->
                         <div class="ui segment">
                             <a href="#" target="_blank" class="text-black">刷题清单</a>
                         </div>
@@ -282,6 +176,7 @@
                         <div class="ui segment">
                             <a href="#" target="_blank" class="text-black">Vue从入门到放弃</a>
                         </div>
+                        <!--*/-->
                     </div>
                     <!--                二维码-->
                     <h4 class="ui horizontal divider header">关注我</h4>

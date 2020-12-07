@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="../static/css/mycss.css">
-    <title>博客分类</title>
+    <title>搜索结果</title>
 </head>
 <body>
 <!--/*/<th:block th:replace="_fragments :: script">/*/-->
@@ -14,14 +14,14 @@
 <!--/*/</th:block>/*/-->
 
 <!--导航-->
-    <nav th:replace="_fragments :: menu(2)" class="ui inverted attached segment">
+    <nav th:replace="_fragments :: menu(1)" class="ui inverted attached segment">
         <div class="ui container">
 
             <div class="ui inverted secondary stackable menu menu-padding">
                 <h2 class="ui yellow header item">梁雄飞的Blog</h2>
                 <a href="#" class="menu-item item mobile-hide"><i class="home icon"></i>首页</a>
-                <a href="#" class="active menu-item item mobile-hide"><i class="idea icon"></i>分类</a>
-                <a href="#" class="menu-item item mobile-hide"><i class="tag icon"></i>标签</a>
+                <a href="#" class="menu-item item mobile-hide"><i class="idea icon"></i>分类</a>
+                <a href="#" class="active menu-item item mobile-hide"><i class="tag icon"></i>标签</a>
                 <a href="#" class="menu-item item mobile-hide"><i class="clone icon"></i>归档</a>
                 <a href="#" class="menu-item item mobile-hide"><i class="info icon"></i>关于我</a>
                 <div class="menu-item right item mobile-hide">
@@ -43,19 +43,12 @@
             <div class="ui attached segment">
                 <div class="ui middle aligned two column grid">
                     <div class="column">
-                        <h3 class="ui yellow header">分类</h3>
+                        <h3 class="ui yellow header">搜索结果</h3>
                     </div>
                     <div class="column right aligned">
-                        共<h2 class="ui red header inline-block" th:text="${#arrays.length(types)}">3</h2>个
+                        共<h2 class="ui red header inline-block" th:text="${page.totalElements}">10</h2>个
                     </div>
                 </div>
-            </div>
-            <div class="ui attached segment">
-                <div class="ui labeled button label-margin" th:each="type : ${types}">
-                    <a href="#" th:href="@{/types/{id}(id=${type.id})}" class="ui basic button" th:classappend="${type.id==activeTypeId} ? 'yellow'" th:text="${type.name}">后端</a>
-                    <div class="ui basic label" th:classappend="${type.id==activeTypeId} ? 'yellow'" th:text="${#arrays.length(type.blogs)}">11</div>
-                </div>
-
             </div>
             <div class="ui top attached yellow segment">
                 <div class="ui vertical segment" th:each="blog : ${page.content}">
@@ -106,6 +99,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
